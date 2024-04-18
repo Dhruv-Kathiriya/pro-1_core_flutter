@@ -14,14 +14,14 @@ void main() {
   choice = int.parse(stdin.readLineSync()!);
 
   List a = [
-    [1, 2, 3],
     [4, 5, 6],
-    [7, 8, 9]
+    [7, 8, 9],
+    [2, 3, 4]
   ];
   List b = [
-    [5, 5, 5],
-    [5, 5, 5],
-    [5, 5, 5]
+    [8, 8, 8],
+    [8, 8, 8],
+    [8, 8, 8]
   ];
   List c = [
     [0, 0, 0],
@@ -87,10 +87,10 @@ void main() {
       break;
 
     case 6:
-      stdout.write("data finish......");
+      stdout.write("data finish....!!");
       break;
     default:
-      stdout.write("invlid input....");
+      stdout.write("invlid input..!!!!");
       break;
   }
 }
