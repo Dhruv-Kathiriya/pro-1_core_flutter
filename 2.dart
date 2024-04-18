@@ -2,12 +2,13 @@ import 'dart:io';
 
 void main() {
   List<int> allNumbers = [];
+  int n;
+  stdout.write("Enter any number choice : ");
+  n = int.parse(stdin.readLineSync() ?? "0");
 
-  print("Enter any 10 numbers: ");
-
-  for (int i = 0; i < 10; i++) {
-    String userInput = stdin.readLineSync()!;
-    int number = int.parse(userInput);
+  for (int i = 0; i < n; i++) {
+    String user = stdin.readLineSync()!;
+    int number = int.parse(user);
     allNumbers.add(number);
   }
 
