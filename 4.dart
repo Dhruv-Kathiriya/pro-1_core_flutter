@@ -6,8 +6,8 @@
 import 'dart:io';
 
 void main() {
-  var
-  List myArray = array [1, 2, 3, 4].toList();
+
+  List myArray =  [1, 2, 3, 4];
   int choice;
 
   do {
@@ -54,5 +54,5 @@ void main() {
       default:
         print("Invalid Choice!!");
     }
-  } while (choice != 0);
+  } while (choice!=0);
 }
