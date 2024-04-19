@@ -1,39 +1,56 @@
+/*
+3.) Write a Progaram to insert,Delete,Upadate,and View Oprestion on the elements in an array using menu driven progaramming approch. 
+*/
+
 import 'dart:io';
 
 void main() {
-  int Insert, Delete, Update, View, choice;
+  stdout.write("Enter size of in Array : ");
+  int size = int.parse(stdin.readLineSync()!);
 
-  print("press 1 for Insert..");
-  print("press 2 for Delete..");
-  print("press 3 for Update..");
-  print("press 4 for View..");
+  List<int> a = List.generate(size, (index) => index);
 
-  stdout.write("Enter your choice :- ");
-  choice = int.parse(stdin.readLineSync()!);
+  for (var i = 0; i < size; i++) {
+    stdout.write("Enter element of $i : ");
+    int val = int.parse(stdin.readLineSync()!);
+    a[i] = val;
+  }
 
-  List<int> demo = [1, 2, 3];
+  print("1. Insert Value");
+  print("2. Delete Value");
+  print("3. Update Value");
+  print("4. View Value");
+  print("5. Exit");
+
+  stdout.write("Enter choice : ");
+  int choice = int.parse(stdin.readLineSync()!);
+
   switch (choice) {
     case 1:
-      demo.add(4);
-      print("$demo");
+      stdout.write('insert value :');
+      int i = int.parse(stdin.readLineSync()!);
+      stdout.write('Enter value : ');
+      choice = int.parse(stdin.readLineSync()!);
+      a.insert(i, choice);
       break;
-
     case 2:
-      demo.remove(1);
-      print("$demo");
+      stdout.write('remove Value : ');
+      choice = int.parse(stdin.readLineSync()!);
+      a.remove(choice);
       break;
 
     case 3:
-      demo.replaceRange(1, 3, [2, 3]);
-      print("$demo");
+      stdout.write(' update value : ');
+      int i = int.parse(stdin.readLineSync()!);
+      stdout.write('Enter value : ');
+      choice = int.parse(stdin.readLineSync()!);
+      a[i] = choice;
       break;
 
     case 4:
-      demo.add(3);
-      print("$demo");
-      break;
+      print('List : $a');
+
     default:
-      stdout.write("invlid choise...!!");
-      break;
+      print('Invalid choice!!');
   }
 }
