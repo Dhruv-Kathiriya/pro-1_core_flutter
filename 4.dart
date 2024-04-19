@@ -2,12 +2,6 @@
 3.) Write a Progaram to insert,Delete,Upadate,and View Oprestion on the elements in an array using menu driven progaramming approch. 
 */
 
-/*
-write a dart program to insert,update,delete, and view opration  on the elements in 
-an array using menu -driven programing approach
-*/
-
-
 
 import 'dart:io';
 
