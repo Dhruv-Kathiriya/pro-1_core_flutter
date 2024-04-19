@@ -3,7 +3,7 @@
 */
 import 'dart:io';
 void main(){
-  var array = [];
+  dynamic array = [];
   List myArr = array.toList();
   stdout.write("Enter array size : ");
   int len = int.parse(stdin.readLineSync()!);
