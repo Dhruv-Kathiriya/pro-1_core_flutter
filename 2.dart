@@ -1,23 +1,20 @@
-/*
-2.) Write a Dart Progaram To Find Largest Numbers in An Array
-*/
-
 import 'dart:io';
-void main(){
-    var array = [];
-    List myArray = array.toList();
-    stdout.write("Enter Array : ");
+
+void main() {
+    List<int> myArr = [];
+    stdout.write("Enter Array Size : ");
     int len = int.parse(stdin.readLineSync()!);
-    for(int i = 1 ; i <= len ; i++){
-      stdout.write("Enter Element $i : ");
+    myArr = List.generate(len, (i) {
+      stdout.write("Enter the value for Element ${i+1} : ");
       int el = int.parse(stdin.readLineSync()!);
-      myArray.add(el);
-  }
-    int large = myArray[0];
-    myArray.forEach((element) {
-      if(element>large){
-        large = element;
+      myArr.add(el);
+      return el;
+    });
+    int largest = myArray[0];
+    myArr.forEach((element) {
+      if(element>largest){
+        largest = element;
       }
     });
-    print("The Largest Element of Array: $large");
+    print("The Largest Element: $largest");
 }
