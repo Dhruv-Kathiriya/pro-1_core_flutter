@@ -3,109 +3,99 @@
 */
 
 import 'dart:io';
-
 void main() {
-  List<List<int>> a = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-  ];
-
-  
-  int choice;
-  for (var i = 0; i < 3; i++) {
-    for (var j = 0; j < 3; j++) {
-      stdout.write('Enter element of a[$i][$j] : ');
-      int val = int.parse(stdin.readLineSync()!);
-      a[i][j] = val;
-    }
-  }
-
-  do {
-    print("\n1. Sum of all elements");
-    print("2. Sum of specific row");
-    print("3. Sum of specific column");
-    print("4. Sum of diagonal elements");*
-    print("5. Sum of antidiagonal elements");
-    print("0. Exit");
-    stdout.write("Enter your choice: ");
+    stdout.write("Enter Row : ");
+  int row = int.parse(stdin.readLineSync()!);
+  print("");
+  stdout.write("Enter Column Number : ");
+  int col = int.parse(stdin.readLineSync()!);
+  List<List<int>> myArray = List.generate(row, (i) {
+    return List.generate(col, (j) {
+      stdout.write("Enter value for element ${[i]} ${[j]}: ");
+      return int.parse(stdin.readLineSync()!);
+    });
+  });
+    print("Array : ");
+    myArray.forEach((element) {
+      stdout.write("$element ");
+      print("");
+    });
+    int choice;
+    do{
+      print("Press 1 for SUM OF ALL ELEMENTS : ");
+      print("Press 2 for SUM OF ANY SPECIFIC ROW : ");
+      print("Press 3 for SUM OF ANY SPECIFIC COLUMN : ");
+      print("Press 4 for SUM OF DIAGONAL ELEMENT : ");
+      print("Press 5 for SUM OF ANTI-DIAGONAL ELEMENT : ");
+      print("Press 6 for EXITING THE CODE : ");
+      print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+      stdout.write("Enter your Choice : ");
     choice = int.parse(stdin.readLineSync()!);
-
+    print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     switch (choice) {
       case 1:
-        choice = 0;
-        for (var i = 0; i < 3; i++) {
-          for (var j = 0; j < 3; j++) choice += a[i][j];
+        int sum = 0;
+        for (int i = 0; i < myArray.length; i++) {
+          for (int j = 0; j < myArray.length; j++) {
+            sum += myArray[i][j];
+          }
         }
-
-        print("\n");
-        print("Sum of all elements : ${choice++}");
-        print("");
+        print("The SUM of all the elements in the Array are : $sum");
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         break;
-
       case 2:
-        choice = 0;
-        stdout.write("\nEnter row : ");
-        int r = int.parse(stdin.readLineSync()!);
-
-        for (var i = 0; i < 3; i++) {
-          for (var j = 0; j < 3; j++) {
-            if (i == r) choice += a[i][j];
-          }
+        print("The SUM of the ROW from the Array is : ");
+        stdout.write("Enter the row number : ");
+        int rowNum = int.parse(stdin.readLineSync()!);
+        if (rowNum > myArray.length) {
+          print("Invalid row number");
+          print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+          break;
         }
-
-        print("\n");
-        print("Sum of $r row : ${choice++}");
-        print("");
+        int rowSum = 0;
+        for (int j = 0; j < myArray[rowNum - 1].length; j++) {
+          rowSum += myArray[rowNum - 1][j];
+        }
+        print("The Sum of Row $rowNum is : $rowSum");
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         break;
-
       case 3:
-        choice = 0;
-        stdout.write("\nEnter row : ");
-  int x = int.parse(stdin.readLineSync()!);
-        for (var i = 0; i < 3; i++) {
-          for (var j = 0; j < 3; j++) {
-            if (j == x) choice += a[i][j];
-          }
+        print("The SUM of the COLUMN from the Array is : ");
+        stdout.write("Enter the column number : ");
+        int colNum = int.parse(stdin.readLineSync()!);
+        if (colNum > myArray[0].length) {
+          print("Invalid column number");
+          print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+          break;
         }
-
-        print("\n");
-        print("Sum of $x colloum : ${choice++}");
-        print("");
+        int colSum = 0;
+        for (int i = 0; i < myArray.length; i++) {
+          colSum += myArray[i][colNum - 1];
+        }
+        print("The sum of column $colNum is : $colSum");
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         break;
-
       case 4:
-        choice = 0;
-        for (var i = 0; i < 3; i++) {
-          for (var j = 0; j < 3; j++) {
-            if (i == j) choice += a[i][j];
-          }
+        int diagSum = 0;
+        for (int i = 0; i < myArray.length; i++) {
+          diagSum += myArray[i][i];
         }
-        print("\n");
-        print("Sum of diagonal element : ${choice++}");
-        print("");
+        print("The SUM of all the DIAGONAL elements in the Array is : $diagSum");
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         break;
-
       case 5:
-        choice = 0;
-        for (var i = 0; i < 3; i++) {
-          for (var j = 0; j < 3; j++) {
-            if (i + j == a.length - 1) choice += a[i][j];
-          }
+        int antiDiagSum = 0;
+        for (int i = 0; i < myArray.length; i++) {
+          antiDiagSum += myArray[i][myArray[i].length - 1 - i];
         }
-
-        print("\n");
-        print("Sum of antidiagonal element : ${choice++}");
-        print("");
+        print("The Sum of all the ANTI-DIAGONAL elements in the Array is : $antiDiagSum");
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         break;
-
-      case 0:
-        print("\n\nExit !!");
-        break;
-
+      case 6:
+        print("Exiting the MENU-DRIVEN CODE..");
+        return;
       default:
-        print("\n\nInvalid input !!");
-        break;
+        print("Invalid Choice Input!!");
     }
-  } while (choice != 0);
-}
+    }while(choice!=6);
+  }
