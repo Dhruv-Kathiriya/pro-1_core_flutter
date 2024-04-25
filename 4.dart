@@ -4,55 +4,71 @@
 
 
 import 'dart:io';
-
 void main() {
-
-  List myArray =  [1, 2, 3, 4];
+  List myArr = [];
+  print("Enter your num: ");
+  myArr = List.generate(3, (i) {
+      stdout.write("Enter the value for Element ${i+1} : ");
+      int elements = int.parse(stdin.readLineSync()!);
+      myArr.add(elements);
+      return elements;
+    });
   int choice;
-
   do {
-    
-    print("press 1 to add  element   ");
-    print("press 2  Update  element   ");
-    print("press 3 to Remove  element  ");
-    print("press 4 to View  elements   ");
-    print("press 0 to Exit ");
+    print("");
+    print("Enter 1 to Enter an element in the Array  ");
+    print("Enter 2 to Update an element in the Array  ");
+    print("Enter 3 to Remove an element in the Array  ");
+    print("Enter 4 to View the elements in the Array  ");
+    print("Enter 0 to Exit ");
+    print("");
     stdout.write("Enter Your Choice : ");
     choice = int.parse(stdin.readLineSync()!);
-
+    print("");
     switch (choice) {
       case 1:
-        stdout.write("add Element  : ");
+        stdout.write("Enter the Element you want to add in your Array : ");
         int addVar = int.parse(stdin.readLineSync()!);
-        myArray.add(addVar);
-        print(myArray);
+        myArr.add(addVar);
+        print("");
+        print(myArr);
+        print("");
         break;
       case 2:
-        stdout.write(" Update  Elements: ");
+        stdout.write("Enter the Element Index where you want to Update : ");
         int index = int.parse(stdin.readLineSync()!);
         print("");
-        stdout.write("Enter the Element  : ");
-        int newElements = int.parse(stdin.readLineSync()!);
-        myArray[index] = newElements;
-        print(myArray);
+        if(index>myArr.length){
+          print("Index is Invalid!!");
+          print("");
+        }
+        else{
+          stdout.write("Enter the Element you want : ");
+          int newEle = int.parse(stdin.readLineSync()!);
+          myArr[index] = newEle;
+          print(myArr);
+          print("");
+        }
+        print("");
         break;
       case 3:
-        stdout.write(" Remove Elements : ");
+        stdout.write("Enter the Element you want to Remove : ");
         int removeVar = int.parse(stdin.readLineSync()!);
-        myArray.remove(removeVar);
-        print(myArray);
+        myArr.remove(removeVar);
+        print(myArr);
+        print("");
         break;
       case 4:
-        stdout.write(" Viewing Elements  : ");
-        myArray.forEach((element) {
+        stdout.write("You are Viewing the List : ");
+        myArr.forEach((element) {
           stdout.write("$element  ");
         });
         break;
       case 0:
-        print("Exiting...");
+        print("Exiting the Menu Driven Code...");
         break;
       default:
         print("Invalid Choice!!");
     }
-  } while (choice!=0);
+  } while (choice != 0);
 }
